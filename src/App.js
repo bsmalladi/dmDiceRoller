@@ -16,12 +16,15 @@ class App extends Component {
   };
 
   rollDice = () => {
-    let newRoll = Math.floor(Math.random() * 6) + 1;
-    newRoll =
-      newRoll +
-      (this.state.plusMinus === "+"
+    let newRoll = 0;
+    var i;
+    for (i = 0; i < this.state.numDice; ++i) {
+      newRoll += Math.floor(Math.random() * 6) + 1;
+    }
+    newRoll +=
+      this.state.plusMinus === "+"
         ? 1 * this.state.modifier
-        : -1 * this.state.modifier);
+        : -1 * this.state.modifier;
     this.setState({ currentRoll: newRoll });
   };
 
