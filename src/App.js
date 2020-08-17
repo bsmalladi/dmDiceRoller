@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import DefaultRoller from "./components/defaultRoller";
+import CustomRollers from "./components/customRollers";
 
 class App extends Component {
   state = {
@@ -21,6 +22,7 @@ class App extends Component {
         {this.state.default.map((dType) => (
           <DefaultRoller key={dType.diceType} type={dType.diceType} />
         ))}
+        <CustomRollers />
       </div>
     );
   }
