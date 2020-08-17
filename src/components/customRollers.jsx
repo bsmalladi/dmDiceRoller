@@ -36,6 +36,8 @@ class CustomRollers extends Component {
   render() {
     return (
       <div>
+        <strong>Add custom rolls:</strong>
+        <br />
         <form>
           <input
             name="numDice"
@@ -83,8 +85,14 @@ class CustomRollers extends Component {
           <input type="button" onClick={this.addCustom} value="Add!" />
           <strong>{this.state.currentRoll}</strong>
         </form>
+        <br />
         {this.state.custom.map((customRoll) => (
-          <SingleCustom num={customRoll.num} dType={customRoll.type} />
+          <SingleCustom
+            num={customRoll.num}
+            dType={customRoll.type}
+            pm={customRoll.pm}
+            mod={customRoll.mod}
+          />
         ))}
       </div>
     );
