@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SingleCustom from "./singleCustom";
 
 class CustomRollers extends Component {
   state = {
@@ -9,21 +10,12 @@ class CustomRollers extends Component {
     currentRoll: 0,
   };
 
-  rollCustom = () => {
-    let newRoll = 0;
-    var i;
-    for (i = 0; i < 3; ++i) {
-      newRoll += Math.floor(Math.random() * 6) + 1;
-    }
-    this.setState({ currentRoll: newRoll });
-  };
-
   render() {
     return (
       <div>
-        <strong>3d6</strong>
-        <button onClick={this.rollCustom}>Roll!</button>
-        {this.state.currentRoll}
+        {this.state.custom.map((customRoll) => (
+          <SingleCustom num={customRoll.num} dType={customRoll.type} />
+        ))}
       </div>
     );
   }
