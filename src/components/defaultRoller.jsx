@@ -76,7 +76,7 @@ class DefaultRoller extends Component {
           value="Roll!"
           className="m-3 btn btn-primary"
         />
-        <strong>{this.state.currentRoll}</strong>
+        <div className="alert alert-dark m-2">{this.state.currentRoll}</div>
       </form>
     );
   }
