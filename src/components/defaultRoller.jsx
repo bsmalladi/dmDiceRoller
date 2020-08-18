@@ -20,16 +20,13 @@ class DefaultRoller extends Component {
     for (i = 0; i < this.state.numDice; ++i) {
       newRoll += Math.floor(Math.random() * this.props.type) + 1;
     }
-    newRoll +=
-      this.state.plusMinus === "+"
-        ? 1 * this.state.modifier
-        : -1 * this.state.modifier;
+    newRoll += (this.state.plusMinus === "+" ? 1 : -1) * this.state.modifier;
     this.setState({ currentRoll: newRoll });
   };
 
   render() {
     return (
-      <form>
+      <form className="form-inline">
         <input
           name="numDice"
           type="number"
@@ -37,26 +34,33 @@ class DefaultRoller extends Component {
           max="100"
           value={this.state.numDice}
           onChange={this.handleChange}
+          className="form-control m-2"
         />
-        <strong>d{this.props.type}</strong>
-        <input
-          type="radio"
-          id="+"
-          name="plusMinus"
-          value="+"
-          checked={this.state.plusMinus === "+"}
-          onChange={this.handleChange}
-        />
-        <label htmlFor="+">+</label>
-        <input
-          type="radio"
-          id="-"
-          name="plusMinus"
-          value="-"
-          checked={this.state.plusMinus === "-"}
-          onChange={this.handleChange}
-        />
-        <label htmlFor="-">-</label>
+        <div className="m-2">d{this.props.type}</div>
+        <div className="form-check form-check-inline">
+          <input
+            type="radio"
+            id="+"
+            name="plusMinus"
+            value="+"
+            checked={this.state.plusMinus === "+"}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="+">+</label>
+        </div>
+
+        <div className="form-check form-check-inline">
+          <input
+            type="radio"
+            id="-"
+            name="plusMinus"
+            value="-"
+            checked={this.state.plusMinus === "-"}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="-">-</label>
+        </div>
+
         <input
           name="modifier"
           type="number"
@@ -64,8 +68,14 @@ class DefaultRoller extends Component {
           max="1000"
           value={this.state.modifier}
           onChange={this.handleChange}
+          className="form-control"
         />
-        <input type="button" onClick={this.rollDice} value="Roll!" />
+        <input
+          type="button"
+          onClick={this.rollDice}
+          value="Roll!"
+          className="m-3 btn btn-primary"
+        />
         <strong>{this.state.currentRoll}</strong>
       </form>
     );
